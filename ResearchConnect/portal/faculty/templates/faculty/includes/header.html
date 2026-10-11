@@ -1,0 +1,46 @@
+{% load static %}
+<div data-collapse="medium" data-animation="default" data-duration="300" data-w-id="58db7844-5919-d71b-dd74-2323ed8dffe9" data-easing="ease" data-easing2="ease" role="banner" class="header w-nav" style="padding-top: 15px; padding-bottom: 15px;">
+            <div class="container-default w-container">
+               <div class="header-wrapper">
+{% if not home_page %}
+                  <div class="split-content header-right"><a href="/" class="brand w-nav-brand"><img src="{% static 'images/logo.svg' %}" alt="ScholarSphere | IIT Kharagpur" style="height: 5rem; margin: 0;" class="header-logo"/></a></div>
+{% endif %}
+                  <div
+                     class="split-content header-center">
+                     <nav role="navigation" class="nav-menu w-nav-menu">
+                        <ul role="list" class="header-navigation">
+                           <li class="nav-item-wrapper first"><a href="/" class="text-200 text-link header-nav">Home</a></li>
+                           <li class="nav-item-wrapper"><a href="/search" class="text-200 text-link header-nav">Professors</a></li>
+                           <li class="nav-item-wrapper"><a href="{% if not home_page %}/{% endif %}#resources" class="text-200 text-link header-nav">Resources</a></li>
+                           <li class="nav-item-wrapper"><a href="{% if not home_page %}/{% endif %}#about" class="text-200 text-link header-nav">About</a></li>
+                           <li class="nav-item-wrapper"><a href="{% if not home_page %}/{% endif %}#faq" class="text-200 text-link header-nav">FAQ</a></li>
+                           <li class="nav-item-wrapper button-mobile"><a href="/search/" class="button-primary header-button-mobile full-width w-button">Explore Now</a></li>
+                        </ul>
+                     </nav>
+                  </div>
+                  <div class="split-content header-left">
+                     <div data-hover="false" data-delay="0" data-w-id="f427ea1c-6c32-cc33-cea1-8174200637d3" class="header-search w-dropdown">
+                        <div class="header-search-toggle w-dropdown-toggle">
+                           <div class="filter-search-header-icon"></div>
+                        </div>
+                        <nav class="header-search-dropdown-list w-dropdown-list">
+                           <div class="card style-2">
+                              <form action="/search" class="filter-search-header-wrapper w-form"><input class="input filter-search-header w-input" maxlength="256" name="query" placeholder="Search" type="search" id="search" required="" /><input type="submit" class="button-primary bg-primary-1 filter-search-header w-button"
+                                 value="Search" /></form>
+                           </div>
+                        </nav>
+                     </div>
+                     <a href="/search/" class="button-primary small header-button w-button">Explore Now</a>
+                     <div class="menu-button w-nav-button">
+                        <div class="header-menu-button-icon-wrapper">
+                           <div class="icon-wrapper">
+                              <div class="header-menu-button-icon-top"></div>
+                              <div class="header-menu-button-icon-medium"></div>
+                              <div class="header-menu-button-icon-bottom"></div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>

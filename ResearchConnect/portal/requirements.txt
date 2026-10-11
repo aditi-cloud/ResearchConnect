@@ -1,0 +1,6 @@
+asgiref==3.7.2
+Django==4.2.11
+requests>=2.28.0
+beautifulsoup4>=4.11.0
+sqlparse==0.4.4
+typing_extensions==4.10.0

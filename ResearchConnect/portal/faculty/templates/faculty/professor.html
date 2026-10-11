@@ -1,0 +1,94 @@
+{% extends "faculty/base.html" %}
+{% load static %}
+
+{% block page_id %}61944e216bd90d4abce16015{% endblock %}
+{% block title %}{{professor.name}} - {{professor.college}}{% endblock %}
+
+{% block metadata %}
+<meta content="Connect with top professors in your field. Explore research opportunities and ignite your academic journey." name="description" />
+<meta content="ScholarSphere - Explore Research Opportunities" property="og:title" />
+<meta content="Connect with top professors in your field. Explore research opportunities and ignite your academic journey." property="og:description" />
+<meta content='{% static "images/logo.jpeg" %}' property="og:image" />
+<meta property="og:type" content="website" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+{% endblock %}
+
+{% block content %}
+<section class="section hero-default agent" style="background-color: var(--neutral-200) !important;">
+            <div class="container-default position-relative z-index-1 w-container" style="width: fit-content; margin-bottom: 4rem;">
+               <div class="mobile-max-width-660px mobile-center-element" style="min-width: 60vw;">
+                  <div data-w-id="579753be-bd80-0841-f9de-54a1f90a0d08" style="transform:translate3d(0, 0, 0) scale3d(0.8, 0.8, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0"
+                     class="card agent">
+                     <div class="agent-main-content" style="max-width: none; min-width: fit-content;">
+                        <div class="agent-content" style="max-width: fit-content;">
+                           <div class="agent-content-top">
+                              <h2 data-w-id="c1d6551f-a186-1ccc-0a64-1d8746376578" style="transform:translate3d(0, 60px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0">{{professor.name}}</h2>
+                              <p style="text-wrap: wrap;" id="text-card-info" data-w-id="3f50e0b8-0a7f-44de-a454-6e3b34598ec7" style="transform:translate3d(0, 60px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0">
+                                 University: <strong>{{professor.college}}</strong>
+                                 {% if professor.department %}
+                                 <br>
+                                 Department: <strong>{{professor.department}}</strong>
+                                 {% endif %}
+                                 {% if professor.designation %}
+                                 <br>
+                                 Designation: <strong>{{professor.designation}}</strong>
+                                 {% endif %}
+                                 <br>
+                                 Research Areas:
+                                 {% for area in professor.research_areas %}
+                                 <strong>{{area}}</strong>
+                                 {% if not forloop.last %}, {% endif %}
+                                 {% endfor %}
+                              </p>
+                              <style>
+                                 @media screen and (max-width: 500px){
+                                    #text-card-info{
+                                       font-size: 0.8rem;
+                                    }
+                                 }
+                              </style>
+                              {% if not professor.college == "IIM Calcutta" %}
+
+                              {% if professor.profile_url %}
+                              <a id="text-card-info" data-w-id="3f50e0b8-0a7f-44de-a454-6e3b34598ec7" style="transform:translate3d(0, 60px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" href="{{professor.profile_url}}" target="_blank">
+                              More Info
+                              </a>
+                              {% endif %}
+
+                              {% endif %}
+                           </div>
+                           <div data-w-id="c64fdd1d-0e66-2a61-949b-8438b3e672be" style="transform:translate3d(0, 60px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0"
+                              class="horizontal-divider"></div>
+                           <div data-w-id="90f30aa4-57ad-5fb2-a62f-6f3c9cd24ec3" style="transform:translate3d(0, 60px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0"
+                              class="split-content-wrapper children-wrap agent-content-bottom">
+                              {% if professor.phone %}
+                              <div class="split-content agent-content-bottom-left">
+                                 <a href="tel:{{professor.phone}}" class="text-200 text-link text-neutral-800 w-inline-block">
+                                    <div class="flex">
+                                       <img src="https://assets-global.website-files.com/6193ce0889184dacb7d96c80/6197fd4fdabccf005b3c9570_icon-2-agents-realtor-template.svg" loading="eager" alt="Phone Icon - Realtor X Webflow Template" class="text-link-icon"
+                                          />
+                                       <div>{{professor.phone}}</div>
+                                    </div>
+                                 </a>
+                              </div>
+                              {% endif %}
+                              {% if professor.email %}
+                              <div class="split-content agent-content-bottom-right">
+                                 <a href="mailto:{{professor.email}}" class="text-200 text-link text-neutral-800 w-inline-block">
+                                    <div class="flex">
+                                       <img src="https://assets-global.website-files.com/6193ce0889184dacb7d96c80/6197fd4f75db262a65c572df_icon-1-agents-realtor-template.svg" loading="eager" alt="Email Icon - Realtor X Webflow Template" class="text-link-icon"
+                                          />
+                                       <div>{{professor.email}}</div>
+                                    </div>
+                                 </a>
+                              </div>
+                              {% endif %}
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="position-absolute agent"></div>
+         </section>
+{% endblock %}

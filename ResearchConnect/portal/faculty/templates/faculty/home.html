@@ -1,0 +1,396 @@
+{% extends "faculty/base.html" %}
+{% load static %}
+
+{% block page_id %}61a54eb2d2f01616c7921004{% endblock %}
+{% block title %}ResearchConnect | IIT KGP{% endblock %}
+
+{% block metadata %}
+<meta content="Connect with top professors in your field. Explore research opportunities and ignite your academic journey." name="description" />
+<meta content="ResearchConnect - Explore Research Opportunities" property="og:title" />
+<meta content="Connect with top professors in your field. Explore research opportunities and ignite your academic journey." property="og:description" />
+<meta content='{% static "images/logo.jpeg" %}' property="og:image" />
+<meta property="og:type" content="website" />
+
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+{% endblock %}
+
+{% block header %}{% include "faculty/includes/header.html" with home_page=True %}{% endblock %}
+
+{% block content %}
+<section class="section hero">
+            <div class="container-default w-container">
+               <div class="mobile-max-width-660px mobile-center-element">
+                  <div class="split-content-wrapper">
+                     <div class="split-content hero-left">
+                        <h1 data-w-id="c9e0d166-632c-0ed3-8f0a-018340257a91" style="transform:translate3d(0, 60px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0">
+                            Find Professors. Explore Research. Fuel Your Future.
+                        </h1>
+                        <p data-w-id="c9e0d166-632c-0ed3-8f0a-018340257a93" style="transform:translate3d(0, 60px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0"
+                           class="margin-bottom-40px">Your gateway to academic excellence: Find professors by research field. Explore opportunities, connect, and elevate your education.</p>
+                        <div data-w-id="c9e0d166-632c-0ed3-8f0a-018340257a97" style="transform:translate3d(0, 60px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0"><a href="/search/" class="button-primary w-button">Explore Now</a></div>
+                     </div>
+                     <div data-w-id="c9e0d166-632c-0ed3-8f0a-018340257a9a" class="split-content hero-right">
+                        <div class="split-content hero-images-left">
+                           <div class="image-wrapper margin-bottom-26px"><img src='{% static "images/iit_kgp.jpg" %}' loading="eager" alt="Real Estate Agent - Realtor X Webflow Template" class="image cover"
+                              /></div>
+                           <div class="image-wrapper margin-bottom-26px"><img src='{% static "images/iima.jpeg" %}' loading="eager" alt="Home For Sale - Realtor X Webflow Template" class="image cover" /></div>
+                        </div>
+                        <div class="split-content hero-images-right">
+                           <div class="image-wrapper margin-bottom-26px"><img src='{% static "images/mit.jpg" %}' loading="eager" alt="Real Estate - Realtor X Webflow Template" class="image cover" /></div>
+                           <div
+                              class="image-wrapper margin-bottom-26px"><img src='{% static "images/harvard.jpg" %}' loading="eager" alt="Real Agent - Realtor X Webflow Template" class="image cover" /></div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <section id="filters" class="section padding-small">
+            <div class="container-default w-container">
+               <div class="position-relative z-index-1">
+                  <div class="mobile-max-width-660px mobile-center-element">
+                     <div data-w-id="c9e0d166-632c-0ed3-8f0a-018340257aa9" style="transform:translate3d(0, 60px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0"
+                        class="split-content-wrapper">
+                        <div class="split-content filters-left">
+                           <form action="/search" class="filter-search-wrapper w-form"><input class="input filter-search w-input" maxlength="256" name="query" placeholder="Search" type="search" id="search" required="" /><input type="submit" class="button-primary bg-primary-1 filter-search w-button"
+                              value="Search" /></form>
+                        </div>
+                        <div class="split-content filters-right" style="justify-content: space-evenly;">
+                           <div data-hover="true" data-delay="0" class="dropdown-category w-dropdown">
+                              <div class="dropdown-category-toggle w-dropdown-toggle">
+                                 <div class="dropdown-category-icon icon-size-21px"></div>
+                                 <div class="dropdown-category-text">Research Areas</div>
+                                 <div class="dropdown-category-arrow"></div>
+                              </div>
+                              <nav class="filters-dropdown-list w-dropdown-list">
+                                 <div class="card style-2" style="max-height: 400px; overflow-y: scroll;">
+                                    <div class="w-dyn-list">
+                                       <div role="list" class="grid-1-column w-dyn-items">
+                                        {% for area in research_areas %}
+                                            {% with area_without_quotes=area|cut:"'" %}
+                                                <div role="listitem" class="category-item w-dyn-item">
+                                                    <a href="/search?area={{ area_without_quotes }}" class="text-100 text-link">{{ area }}</a>
+                                                </div>
+                                            {% endwith %}
+                                        {% endfor %}
+                                       </div>
+                                    </div>
+                                 </div>
+                              </nav>
+                           </div>
+                           <div data-hover="true" data-delay="0" class="dropdown-category w-dropdown">
+                              <div class="dropdown-category-toggle w-dropdown-toggle">
+                                 <div class="dropdown-category-icon"></div>
+                                 <div class="dropdown-category-text">University</div>
+                                 <div class="dropdown-category-arrow"></div>
+                              </div>
+                              <nav class="filters-dropdown-list w-dropdown-list">
+                                 <div class="card style-2" style="max-height: 400px; overflow-y: scroll;">
+                                    <div class="w-dyn-list">
+                                       <div role="list" class="grid-1-column w-dyn-items" style="max-height: 250px; overflow-y: scroll;">
+                                          {% for college in colleges %}
+                                          <div role="listitem" class="category-item w-dyn-item">
+                                            {% with college_without_quotes=college|cut:"'" %}
+                                                <a href="/search?university={{ college_without_quotes }}" class="text-100 text-link">{{ college }}</a>
+                                            {% endwith %}
+                                          </div>
+                                          {% endfor %}
+                                       </div>
+                                    </div>
+                                 </div>
+                              </nav>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <section class="section padding-top-none">
+            <div class="container-default w-container">
+               <div class="mobile-767px-and-down-max-width-660px mobile-767px-and-down-center-element">
+                  <div data-w-id="c9e0d166-632c-0ed3-8f0a-018340257b16" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 1;" class="split-content-wrapper vertical-only-mobile-767px-and-down margin-bottom-default">
+                     <div class="split-content properties-top-left">
+                        <h2 class="margin-bottom-0px">Featured Professors</h2>
+                     </div>
+                     <div class="split-content properties-top-right"><a href="/search" class="button-secondary w-button">Browse all</a></div>
+                  </div>
+                  <div data-w-id="c9e0d166-632c-0ed3-8f0a-018340257b1d" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 1;" class="w-dyn-list">
+                     <div role="list" class="grid-3-columns style-2 w-dyn-items">
+                        {% for faculty in Faculties %}
+                        <div role="listitem" class="property-item w-dyn-item">
+                            <a href="/professor/{{faculty.name|slugify}}?id={{faculty.id}}" class="card card-link card-property w-inline-block" >
+                               <div class="card-property-content">
+                                  <div class="h3-size margin-bottom-12px">{{faculty.name}}</div>
+                                  <h3 class="h5-size margin-bottom-10px">{{faculty.college}}</h3>
+                                  <div class="flex">
+                                     <div class="text-100">{{faculty.department}}</div>
+                                  </div>
+                                  <div class="margin-top-none">
+                                     <div class="horizontal-divider margin-bottom-reduced"></div>
+                                     <div class="flex children-wrap badges-12px">
+                                        {% for area in faculty.research_areas %}
+                                            <div class="badge spacing-12px">
+                                                <div>{{area}}</div>
+                                            </div>
+                                        {% endfor %}
+                                     </div>
+                                  </div>
+                               </div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <section class="section padding-top-none" id="about">
+            <div data-w-id="c9e0d166-632c-0ed3-8f0a-018340257b3f" style="transform:translate3d(0, 60px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0"
+               class="container-large-1158px text-center margin-bottom-small">
+               <div class="mobile-767px-and-down-max-width-320px mobile-767px-and-down-center-element">
+                   <h2>About Us</h2>
+                   <div class="max-width-900px center-element">
+                        <p>We're dedicated to bridging the gap between students and professors, offering a comprehensive platform for academic exploration and collaboration. Discover your academic journey with us today.</p>
+                   </div>
+               </div>
+               </div>
+            <div class="container-default w-container">
+               <div class="w-layout-grid grid-3-columns style-1">
+                  <div data-w-id="c9e0d166-632c-0ed3-8f0a-018340257b47" style="transform:translate3d(0, 60px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0"
+                     class="step-wrapper">
+                     <div class="margin-bottom-40px"><img src='{% static "images/search.png" %}' loading="eager" class="image step" style="max-height: 230px;" /></div>
+                     <div
+                        class="step-content">
+                        <div class="max-width-297px center">
+                           <h3>1. Search for professors & research areas</h3>
+                        </div>
+                        <p class="margin-bottom-0px">Utilize our search features to find professors in specific research areas.</span></p>
+                     </div>
+                  </div>
+                  <div data-w-id="c9e0d166-632c-0ed3-8f0a-018340257b52" style="transform:translate3d(0, 60px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0"
+                     class="step-wrapper">
+                     <div class="margin-bottom-40px"><img src='{% static "images/connect.png" %}' loading="eager" class="image step" style="max-height: 230px;" /></div>
+                     <div
+                        class="step-content">
+                        <div class="max-width-297px center">
+                           <h3>2. Connect with relavent professors</h3>
+                        </div>
+                        <p class="margin-bottom-0px">Reach out to the professors using the provided contact details.</p>
+                     </div>
+                  </div>
+                  <div data-w-id="c9e0d166-632c-0ed3-8f0a-018340257b5d" style="transform:translate3d(0, 60px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0"
+                     class="step-wrapper">
+                     <div class="margin-bottom-40px"><img src='{% static "images/research.png" %}' loading="eager" class="image step" style="max-height: 230px;" /></div>
+                     <div
+                        class="step-content">
+                        <div class="max-width-297px center">
+                           <h3>3. Secure your dream research internship</h3>
+                        </div>
+                        <p class="margin-bottom-0px">You'll have the opportunity to work under the professor of your choice.</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <section id="resources" class="section padding-top-none">
+            <div class="container-default w-container">
+               <div class="mobile-max-width-660px mobile-center-element">
+                  <div data-w-id="20f64667-5f5c-a4e2-e7ec-5c5cb153c570" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); opacity: 1; transform-style: preserve-3d;" class="split-content-wrapper margin-bottom-40px">
+                     <div class="split-content blog-section-top-left">
+                        <h2 class="margin-bottom-0px">Resources</h2>
+                     </div>
+
+                  </div>
+                  <div data-w-id="b480b23f-7735-28c5-7cc5-87c400d2a4de" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); opacity: 1; transform-style: preserve-3d;" class="w-dyn-list">
+                     <div role="list" class="grid-3-columns style-3 w-dyn-items">
+                        <div role="listitem" class="post-item w-dyn-item">
+                           <a href="/optimizing-your-resume" class="card card-link card-post w-inline-block">
+                              <div class="image-wrapper card-post"><img src="{% static "images/1.png" %}" loading="eager" style="height: 300px; object-fit: cover;" alt="optimizing-your-resume" sizes="(max-width: 479px) 100vw, (max-width: 767px) 92vw, (max-width: 991px) 660px, (max-width: 1919px) 30vw, 406px" class="image cover" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"></div>
+                              <div class="card-post-content">
+                                 <h3 class="h3-size margin-bottom-0px" style="color: rgb(34, 34, 35);">Optimizing Your Resume</h3>
+                                 <div class="margin-top-auto">
+                                    <div class="horizontal-divider margin-small"></div>
+                                    <div class="flex space-between children-wrap">
+                                       <div class="split-content card-post-content-bottom-left">
+                                          <div class="text-200">Resources</div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </a>
+                        </div>
+                        <div role="listitem" class="post-item w-dyn-item">
+                           <a href="/sample-cover-letter" class="card card-link card-post w-inline-block">
+                              <div class="image-wrapper card-post"><img src="{% static "images/cv.png" %}" loading="eager" style="height: 300px; object-fit: cover;" sizes="(max-width: 479px) 100vw, (max-width: 767px) 92vw, (max-width: 991px) 660px, (max-width: 1919px) 30vw, 406px" class="image cover" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"></div>
+                              <div class="card-post-content">
+                                 <h3 class="h3-size margin-bottom-0px" style="color: rgb(34, 34, 35);">Cover Letter Gallery</h3>
+                                 <div class="margin-top-auto">
+                                    <div class="horizontal-divider margin-small"></div>
+                                    <div class="flex space-between children-wrap">
+                                       <div class="split-content card-post-content-bottom-left">
+                                          <div class="text-200">Resources</div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </a>
+                        </div>
+                        <div role="listitem" class="post-item w-dyn-item">
+                           <a href="/tips-for-cold-emailing" class="card card-link card-post w-inline-block">
+                              <div class="image-wrapper card-post"><img src="{% static "images/blog3.png" %}" loading="eager" style="height: 300px; object-fit: cover;" sizes="(max-width: 479px) 100vw, (max-width: 767px) 92vw, (max-width: 991px) 660px, (max-width: 1919px) 30vw, 406px" class="image cover"></div>
+                              <div class="card-post-content">
+                                 <h3 class="h3-size margin-bottom-0px">Tips for Cold Emailing Professors</h3>
+                                 <div class="margin-top-auto">
+                                    <div class="horizontal-divider margin-small"></div>
+                                    <div class="flex space-between children-wrap">
+                                       <div class="split-content card-post-content-bottom-left">
+                                          <div class="text-200">Resources</div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+                  <div style="padding-top: 2rem;" data-w-id="b480b23f-7735-28c5-7cc5-87c400d2a4de" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); opacity: 1; transform-style: preserve-3d;" class="w-dyn-list">
+                     <div role="list" class="grid-3-columns style-3 w-dyn-items">
+                        <div role="listitem" class="post-item w-dyn-item">
+                           <a href="/tips-for-getting-internships" class="card card-link card-post w-inline-block">
+                              <div class="image-wrapper card-post"><img src="{% static "images/4.png" %}" loading="eager" style="height: 300px; object-fit: cover;" alt="optimizing-your-resume" sizes="(max-width: 479px) 100vw, (max-width: 767px) 92vw, (max-width: 991px) 660px, (max-width: 1919px) 30vw, 406px" class="image cover" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"></div>
+                              <div class="card-post-content">
+                                 <h3 class="h3-size margin-bottom-0px" style="color: rgb(34, 34, 35);">Tips for Getting Internships</h3>
+                                 <div class="margin-top-auto">
+                                    <div class="horizontal-divider margin-small"></div>
+                                    <div class="flex space-between children-wrap">
+                                       <div class="split-content card-post-content-bottom-left">
+                                          <div class="text-200">Resources</div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </a>
+                        </div>
+                        <div role="listitem" class="post-item w-dyn-item">
+                           <a href="/undergraduate-physics-research-internships" class="card card-link card-post w-inline-block">
+                              <div class="image-wrapper card-post"><img src="{% static "images/5.png" %}" loading="eager" style="height: 300px; object-fit: cover;" sizes="(max-width: 479px) 100vw, (max-width: 767px) 92vw, (max-width: 991px) 660px, (max-width: 1919px) 30vw, 406px" class="image cover" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"></div>
+                              <div class="card-post-content">
+                                 <h3 class="h3-size margin-bottom-0px" style="color: rgb(34, 34, 35);">UG Physics Research Internships</h3>
+                                 <div class="margin-top-auto">
+                                    <div class="horizontal-divider margin-small"></div>
+                                    <div class="flex space-between children-wrap">
+                                       <div class="split-content card-post-content-bottom-left">
+                                          <div class="text-200">Resources</div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </a>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <section class="section padding-top-none">
+            <div class="container-large-1158px">
+               <h2 data-w-id="7f67faea-be84-a72a-fe99-f615e4795904" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 1;" class="margin-bottom-small text-center">Take a look at <span class="text-breaking-no-wrap">our numbers</span></h2>
+               <div class="w-layout-grid grid-2-columns style-1">
+                  <div data-w-id="1cd3d9ed-e575-2469-8f61-469b0dc6958f" style=" margin: auto; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 1;" class="max-width-298px text-center">
+                     <div class="margin-bottom-small-v3">
+                        <div class="large-number text-primary-1">120+</div>
+                     </div>
+                     <div>
+                        <h3 class="margin-bottom-11px">Research Areas</h3>
+                        <p class="margin-bottom-0px">were listed from a vast range of domains.</p>
+                     </div>
+                  </div>
+                  <div data-w-id="7891e0b4-225f-3a2e-9844-02a5f4160e69" style=" margin: auto; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 1;" class="max-width-298px text-center">
+                     <div class="margin-bottom-small-v3">
+                        <div class="large-number text-primary-1">1600+</div>
+                     </div>
+                     <div>
+                        <h3 class="margin-bottom-11px">Professors</h3>
+                        <p class="margin-bottom-0px">information, including their research areas & contact details.</p>
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+         </section>
+
+         <section class="section padding-top-none" id="faq">
+            <div class="container-medium-761px text-center margin-bottom-40px">
+               <h1 data-w-id="9994ce20-4b67-5671-ace1-e4fdac07b2e4" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 1;" class="margin-bottom-22px">Frequently Asked Questions</h1>
+               <p data-w-id="85f27a74-a46f-2d88-7718-a2b6e97e6a79" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 1;">
+                Explore our FAQ section for comprehensive answers to common queries, tailored for students.
+            </p>
+            </div>
+            <div class="container-medium-962px">
+               <div data-current="Home Buying" data-easing="ease" data-duration-in="300" data-duration-out="100" class="w-tabs">
+
+                  <div data-w-id="e94480ff-2b96-59b6-aec5-9f7027916a7d" class="overflow-visible w-tab-content" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 1;">
+                     <div data-w-tab="Home Buying" class="tab-pane w-tab-pane w--tab-active" id="w-tabs-0-data-w-pane-0" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-0">
+                        <div class="w-layout-grid grid-1-column gap-28px">
+                           <div class="card borders-radius-16px faq">
+                              <div class="flex space-between">
+                                 <div class="flex">
+                                    <div class="h3-size faq-title-number">1.</div>
+                                    <h2 class="h3-size margin-bottom-0px">How can I find a professor whose research aligns with my interests?</h2>
+                                 </div>
+                                 <div class="faq-icon-wrapper">
+                                    <div class="faq-icon-1" style=""></div>
+                                    <div class="faq-icon-2" style=""></div>
+                                 </div>
+                              </div>
+                              <div class="faq-content" style="transform: translate3d(0px, 100%, 0px) scale3d(0.95, 0.95, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 0; height: 0px; display: none;">
+                                 <div class="space faq"></div>
+                                 <p class="margin-bottom-0px">You can use our search feature to browse professors by research field or simply explore the directory to find relevant faculty members.</p>
+                              </div>
+                           </div>
+                           <div class="card borders-radius-16px faq">
+                              <div class="flex space-between">
+                                 <div class="flex">
+                                    <div class="h3-size faq-title-number">2.</div>
+                                    <h2 class="h3-size margin-bottom-0px">How can I maximize the benefits of engaging in research with a professor?</h2>
+                                 </div>
+                                 <div class="faq-icon-wrapper">
+                                    <div class="faq-icon-1" style=""></div>
+                                    <div class="faq-icon-2" style=""></div>
+                                 </div>
+                              </div>
+                              <div class="faq-content" style="transform: translate3d(0px, 100%, 0px) scale3d(0.95, 0.95, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 0; height: 0px; display: none;">
+                                 <div class="space faq"></div>
+                                 <p class="margin-bottom-0px">Engaging actively in research discussions, attending seminars or conferences, and seeking mentorship opportunities can greatly enhance your research experience and network.</p>
+                              </div>
+                           </div>
+                           <div class="card borders-radius-16px faq">
+                              <div class="flex space-between">
+                                 <div class="flex">
+                                    <div class="h3-size faq-title-number">3.</div>
+                                    <h2 class="h3-size margin-bottom-0px">Are there specific guidelines for approaching professors for research internships?</h2>
+                                 </div>
+                                 <div class="faq-icon-wrapper">
+                                    <div class="faq-icon-1" style=""></div>
+                                    <div class="faq-icon-2" style=""></div>
+                                 </div>
+                              </div>
+                              <div class="faq-content" style="transform: translate3d(0px, 100%, 0px) scale3d(0.95, 0.95, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 0; height: 0px; display: none;">
+                                 <div class="space faq"></div>
+                                 <p class="margin-bottom-0px">While there are no strict rules, it's advisable to craft a professional and personalized email expressing your interest and qualifications.</p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+{% endblock %}
